@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            position: relative;
+        }
+        .container {
+            padding: 20px;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+        }
+        .card-title {
+            font-size: 22px;
+            color: #333;
+        }
+        .btn-home {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-4">
+    {% for article in news %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ forloop.counter }}) {{ article.title | slice:":60" }}....!</h5>
+            <a href="{% url 'detail' article.pk %}" class="stretched-link"></a>
+        </div>
+    </div>
+    {% endfor %}
+    <a href="{% url 'home' %}" class="btn btn-danger btn-lg btn-home">Home</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
